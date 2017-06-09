@@ -21,8 +21,6 @@ li {
 
 /*PC参赛者详情页*/
 
-.container {}
-
 .container .main {
     padding: 50px;
 }
@@ -41,16 +39,37 @@ li {
 
 .breadcrumb {
     background-color: transparent;
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+.breadcrumb>li+li:before {
+    content: "";
+    padding: 0;
+}
+
+.breadcrumb a {
+    color: #d5d5d5;
+}
+
+.breadcrumb .active {
+    font-size: 34px;
 }
 
 .breadcrumb>li {
     display: inline-block;
+    vertical-align: bottom;
 }
 
-.breadcrumb>li+li:before {
+.breadcrumb li::after {
     color: #CCCCCC;
-    content: "> ";
+    content: ">";
     padding: 0 5px;
+}
+
+.breadcrumb li:last-child::after,
+.breadcrumb li:last-child::before {
+    content: "";
 }
 
 .avatar img {
@@ -119,6 +138,51 @@ li {
     color: #d5d5d5;
 }
 
+.like {
+    margin-bottom: 40px;
+}
+
+.like p {
+    float: left;
+    font-size: 28px;
+    color: #d5d5d5;
+    margin-bottom: 0;
+    line-height: 57px;
+}
+
+.like p span {
+    color: #004894;
+    font-size: 24px;
+}
+
+.like button {
+    background: #004894;
+    border-radius: 0;
+    color: #fff;
+    font-size: 26px;
+    border: 0;
+    padding: 10px 60px;
+    float: right;
+}
+
+.like button:hover,
+.like button:active {
+    background-color: #003a78;
+}
+
+.like button:focus {
+    background-color: #002b59;
+}
+
+.like i {
+    display: inline-block;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    background: url(../images/icon-list.png) left top no-repeat;
+}
+
 .describe p:nth-child(2) {
     text-indent: 2em;
 }
@@ -137,9 +201,9 @@ li {
 
 .design-item {
     align-items: flex-start;
-    width: 500px;
-    height: 300px;
+    width: 515px;
     margin-bottom: 40px;
+    padding: 0;
 }
 
 .design-item img {
@@ -159,10 +223,9 @@ li {
         padding: 10px;
     }
     .avatar {
-        margin-right: 55px;
+        margin-right: 35px;
         width: 88px;
         height: 88px;
-        float: left;
     }
     .intro {
         margin-bottom: 25px;
@@ -175,11 +238,9 @@ li {
         margin-right: 20px;
     }
     .intro_detail h1 i {
-        display: inline-block;
         margin-right: 9px;
         width: 15px;
         height: 15px;
-        vertical-align: bottom;
         background: url(../images/icon-list.png) 0 -34px no-repeat;
         background-size: 15px auto;
     }
@@ -193,27 +254,59 @@ li {
     .describe p {
         font-size: 12px;
     }
+    .like {
+        margin-bottom: 20px;
+    }
+    .like p {
+        font-size: 12px;
+        line-height: 27px;
+    }
+    .like p span {
+        font-size: 12px;
+    }
+    .like button {
+        font-size: 10px;
+        padding: 5px 30px;
+    }
+    .like i {
+        margin-right: 5px;
+        width: 15px;
+        height: 15px;
+        background: url(../images/icon-list.png) left top no-repeat;
+        background-size: 100%;
+    }
     .intro_content {
         width: 100%;
         height: 80px;
+    }
+    .design-item {
+        width: 100%;
+        margin-bottom: 20px;
     }
 }
 
 @media (min-width: 768px) {
     .container {
-        min-width: 1170px;
+        /*min-width: 1170px;*/
         padding: 0;
     }
 }
 
-@media (min-width: 992px) {
-    .container {
-        min-width: 1170px;
-    }
-}
 
-@media (min-width: 1200px) {
-    .container {
-        min-width: 1170px;
-    }
+/*上传页面*/
+.container form {
+    width: 890px;
+    margin: 0 auto;
+}
+.container input {
+    font-size: 22px;
+    height: 57px;
+    border-radius: 0;
+}
+.container textarea {
+    font-size: 22px;
+    border-radius: 0;
+}
+.container button {
+    border-radius: 0;
 }
