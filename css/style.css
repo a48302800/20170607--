@@ -54,8 +54,12 @@ li {
 
 .breadcrumb .active {
     font-size: 34px;
+    color: #333;
 }
-
+.breadcrumb .active span {
+    color: #d5d5d5;
+    font-size: 20px;
+}
 .breadcrumb>li {
     display: inline-block;
     vertical-align: bottom;
@@ -92,16 +96,21 @@ li {
     margin-right: 40px;
 }
 
-.intro_detail h1 i {
+.username,.address{
     display: inline-block;
+    background: url(../images/icon-list.png) 0 -40px no-repeat;
+  
+}
+
+.intro_detail h1 i {
     margin-right: 18px;
     width: 30px;
     height: 30px;
     vertical-align: bottom;
-    background: url(../images/icon-list.png) 0 -68px no-repeat;
+    background-position: 0 -68px;
 }
 
-.intro_detail h1 span:nth-child(3) i {
+.intro_detail .address {
     background-position: 0 -34px;
 }
 
@@ -237,14 +246,14 @@ li {
     .intro_detail h1 span {
         margin-right: 20px;
     }
-    .intro_detail h1 i {
+    .intro_detail .username,.intro_detail .address {
         margin-right: 9px;
         width: 15px;
         height: 15px;
         background: url(../images/icon-list.png) 0 -34px no-repeat;
         background-size: 15px auto;
     }
-    .intro_detail h1 span:nth-child(3) i {
+    .intro_detail .address{
         background-position: 0 -17px;
     }
     .intro_detail p {
@@ -294,19 +303,178 @@ li {
 
 
 /*上传页面*/
+
 .container form {
     width: 890px;
     margin: 0 auto;
+    padding: 50px;
+    border: 1px solid #004894;
+    border-radius: 15px;
+    margin-top: 34px;
 }
+
 .container input {
     font-size: 22px;
     height: 57px;
     border-radius: 0;
 }
+
+.container input[type="radio"] {
+    width: 24px;
+    margin-top: 0;
+}
+
+.container label {
+    font-size: 20px;
+    line-height: 57px;
+}
+
 .container textarea {
     font-size: 22px;
     border-radius: 0;
 }
+
 .container button {
     border-radius: 0;
+}
+
+@media (max-width: 768px) {
+    .container form {
+        width: 100%;
+        padding: 25px;
+    }
+    .container input {
+        height: 22px;
+        font-size: 10px;
+    }
+    .container label {
+        font-size: 10px;
+        height: 22px;
+        line-height: 22px;
+    }
+    .container input[type="radio"] {
+        width: 12px;
+    }
+    .container textarea {
+        font-size: 10px;
+    }
+    #submit {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+
+/*产品列表*/
+.production-wrap{
+    margin-bottom: 50px;
+}
+.production-wrap ul{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.production-wrap li {
+    width: 380px;
+    float: left;
+    margin-bottom: 15px;
+}
+
+/*.production-wrap .item-img {
+    width: 380px;
+    height: 250px;
+}*/
+
+.text-box {
+    border: 1px solid #f1f1f1;
+    border-top: none;
+    padding: 15px;
+}
+
+.text-box p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.8;
+}
+.text-box p{
+    display: flex;
+    justify-content: space-between;
+}
+/*.text-box p:first-child span {
+    margin-right: 85px;
+}
+.text-box p:nth-child(2) span{
+    float: left;
+}*/
+.text-box p:nth-child(2) span:nth-child(2){
+    float: right;
+    color: #004894;
+}
+.text-box p:nth-child(2) span:nth-child(2) i {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background: url(../images/like.png);
+}
+.text-box .username,.text-box .address{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    background: url(../images/icon-list.png) 0 -40px no-repeat;
+    background-size: 18px auto;
+}
+.text-box .address{
+    background-position: 0 -20px;
+}
+.loadmore{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: 40%;
+    padding: 10px 0;
+    color: #fff;
+    background: #004894;
+}
+.loadmore:active{
+    background: #003f81;
+}
+@media (max-width: 768px) {
+    .breadcrumb{
+        font-size: 10px;
+        margin: 0;
+    }
+    .breadcrumb .active{
+        font-size: 18px;
+    }
+    .breadcrumb .active span{
+        font-size: 10px;
+    }
+    .production-wrap li{
+        width: 48%;
+        margin-bottom: 12px;
+    }
+    .text-box p {
+        font-size: 10px;
+        line-height: 1.8;
+    }
+    .text-box .username,.text-box .address{
+        width: 8px;
+        height: 8px;
+        margin-right: 3px;
+        background: url(../images/icon-list.png) 0 -40px no-repeat;
+        background-size: 18px auto;
+    }
+    .text-box .address{
+        background-position: 0 -20px;;
+    } 
+    .text-box p:nth-child(2) span:nth-child(2) i {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        background: url(../images/like.png);
+        background-size: 10px
+    }
 }

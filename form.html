@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <title>form</title>
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="container">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <label class="radio-inline">
+                        <input type="radio" name="person" id="designer" value="designer" checked> &nbsp;&nbsp;设计师
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="person" id="owner" value="owner"> &nbsp;&nbsp;业主
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <input type="text" name="username" class="form-control" id="username" placeholder="姓名">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <input type="number" name="phone" class="form-control" id="phone" placeholder="手机号">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6">
+                    <input type="text" name="province" class="form-control " id="province" placeholder="广东">
+                </div>
+                <div class="col-xs-6">
+                    <input type="text" name="city" class="form-control " id="city" placeholder="佛山">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <input type="text" name="addr" class="form-control" id="addr" placeholder="详细地址">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <input type="text" name="exp" class="form-control" id="exp" placeholder="设计经验">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <input type="text" name="style" class="form-control" id="style" placeholder="设计风格">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <textarea class="form-control" name="intro" id="intro" rows="3" placeholder="个人介绍"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button id="submit" type="submit" class="btn btn-primary  btn-lg btn-block">立即报名</button>
+                </div>
+            </div>
+             
+        </form>
+    </div>
+    <div class="footer" style="background: pink;height:300px;"></div>
+</body>
+<script>
+    $(function(){
+        $('#submit').on('click',function(event){
+            var _username = $('#username').val(),
+            if (_username) {
+                alert ('用户名不能为空'+_username)
+                 event.preventDefault();
+            } else {
+                alert('提交成功')
+            }
+        })
+    })
+</script>
+</html>

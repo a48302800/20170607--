@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <title>作品列表</title>
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="container">
+        <div class="nav">
+            <ol class="breadcrumb">
+                <li><a href="#">活动首页</a></li>
+                <li class="active">参赛作品<span>（根据点赞数从多到少进行排序）</span></li>
+            </ol>
+        </div>
+        <div class="production-wrap">
+            <ul>
+                <li>
+                    <div class="item-img">
+                        <img src="images/ds.png" alt="" width="100%" height="100%">
+                    </div>
+                    <div class="text-box">
+                        <p><span>设计师</span><span><i class="username"></i>张三</span><span><i class="address"></i>佛山</span></p>
+                        <p><span>现代简约</span><span><i></i>12345</span></p>
+                    </div>
+                </li>
+            </ul>
+            <div class="loadmore">加载更多</div>
+        </div>
+    </div>
+    <div class="footer" style="background: pink;height:300px;"></div>
+</body>
+<script>
+        $(function(){
+            var _li =`
+                <li>
+                    <div class="item-img">
+                        <img src="images/ds.png" alt="" width="100%" height="100%">
+                    </div>
+                    <div class="text-box">
+                        <p><span>设计师</span><span><i class="username"></i>张三</span><span><i class="address"></i>佛山</span></p>
+                        <p><span>现代简约</span><span><i></i>12345</span></p>
+                    </div>
+                </li>`;
+            $('.production').empty();
+            for(var i=0;i<9;i++){
+                $('.production-wrap ul').append(_li);
+                
+            }
+            // var len = $('.production-wrap li').length;
+            // for(var i = 0;i<len;i++){
+            //     if(i%3==0){
+            //         $('.production-wrap li:nth-child('+i+')').css('margin','0 0 15px 0')
+            //     }
+            // }
+            
+        })
+
+
+
+</script>
+
+</html>
