@@ -2,89 +2,132 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <title>form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>form</title>
 </head>
 
 <body>
-    <div class="header"></div>
-    <div class="container">
-        <form class="form-horizontal">
-            <div class="form-group">
-                <div class="col-xs-12">
-                    <label class="radio-inline">
-                        <input type="radio" name="person" id="designer" value="designer" checked> &nbsp;&nbsp;设计师
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="person" id="owner" value="owner"> &nbsp;&nbsp;业主
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <input type="text" name="username" class="form-control" id="username" placeholder="姓名">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <input type="number" name="phone" class="form-control" id="phone" placeholder="手机号">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-6">
-                    <input type="text" name="province" class="form-control " id="province" placeholder="广东">
-                </div>
-                <div class="col-xs-6">
-                    <input type="text" name="city" class="form-control " id="city" placeholder="佛山">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <input type="text" name="addr" class="form-control" id="addr" placeholder="详细地址">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <input type="text" name="exp" class="form-control" id="exp" placeholder="设计经验">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <input type="text" name="style" class="form-control" id="style" placeholder="设计风格">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <textarea class="form-control" name="intro" id="intro" rows="3" placeholder="个人介绍"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <button id="submit" type="submit" class="btn btn-primary  btn-lg btn-block">立即报名</button>
-                </div>
-            </div>
-             
-        </form>
+  <div class="header"></div>
+  <div class="container">
+    <div class="main cf">
+      <form class="form-horizontal" action="" method="get" style="display:none">
+        <div class="form-group">
+          <div class="col-xs-12">
+            <label class="radio-inline">
+              <input type="radio" name="person" id="designer" value="designer" checked> &nbsp;&nbsp;设计师
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="person" id="owner" value="owner"> &nbsp;&nbsp;业主
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="username" class="form-control" id="username" placeholder="姓名">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="number" name="phone" class="form-control" id="phone" placeholder="手机号">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-6">
+            <select name="province" id="province" class="form-control"></select>
+            </select>
+          </div>
+          <div class="col-xs-6">
+            <select name="city" id="city" class="form-control"></select>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="addr" class="form-control" id="addr" placeholder="详细地址">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="exp" class="form-control" id="exp" placeholder="设计经验">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" name="style" class="form-control" id="style" placeholder="设计风格">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <textarea class="form-control" name="intro" id="intro" rows="5" placeholder="个人介绍"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <button id="submit" type="submit" class="btn btn-primary  btn-lg btn-block">立即报名</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="signed-box">
+        <div class="avata">
+          <img src="images/ds.png" alt="" width="100%" height="100%">
+        </div>
+        <div class="btn-box">
+          <a href="#" class="btn btn-default btn-block">参赛作品</a>
+          <a href="#" class="btn btn-default btn-block">我的作品</a>
+          <a href="#" class="btn btn-default btn-block">重新上传</a>
+        </div>
+      </div>
     </div>
-    <div class="footer" style="background: pink;height:300px;"></div>
+  </div>
+  <div class="footer" style="background: pink;height:300px;"></div>
 </body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<!--省市联动逻辑及城市数据-->
+<script src="js/area.js"></script>
+<!--自动定位组件-->
+<script src="//3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>
 <script>
-    $(function(){
-        $('#submit').on('click',function(event){
-            var _username = $('#username').val(),
-            if (_username) {
-                alert ('用户名不能为空'+_username)
-                 event.preventDefault();
-            } else {
-                alert('提交成功')
-            }
-        })
-    })
+  window.onload = function () {
+
+    // 省市联动
+    // init
+    new PCAS("province", "city", "广东省", "广州市");
+
+    // 自动定位
+    getLocation();
+    // 输入检测
+  }
+
+  function getLocation() {
+    // 判断是否移动设备
+    var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito",
+      "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
+    var browser = navigator.userAgent.toLowerCase();
+    var isMobile = false;
+    for (var i = 0; i < mobileAgent.length; i++) {
+      if (browser.indexOf(mobileAgent[i]) != -1) {
+        isMobile = true;
+        break;
+      }
+    }
+    if (isMobile == false) return;
+
+    // 自动定位
+    var geomap = new qq.maps.Geolocation('C67BZ-7WVH3-KCT3K-32X5Q-RTX3O-QBFIQ', 'mapqq');
+    geomap.getLocation(function (position) {
+      var p = position.province;
+      var c = position.city;
+      $('#province').val(p);
+      $('#city').val(c);
+    }, null)
+  }
 </script>
+
 </html>

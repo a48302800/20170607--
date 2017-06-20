@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
     <title>PC参赛者详情页</title>
 </head>
 
@@ -31,7 +31,8 @@
                     <div class="intro_detail cf">
                         <h1 class="hidden-xs"><span>设计师</span><span><i class="username"></i>张三</span><span><i class="address"></i>佛山</span></h1>
                         <h1 class="visible-xs-block"><span><i class="username"></i>张三</span><span><span>设计师</span></h1>
-                        <p class="visible-xs-block"><i class="address"></i>佛山</span></p>
+                        <p class="visible-xs-block"><i class="address"></i>佛山</span>
+                        </p>
                         <p>擅长风格: 现代简约</p>
                         <p>设计经验: 10年</p>
                     </div>
@@ -45,10 +46,10 @@
                 </div>
                 <div class="like cf">
                     <p>参赛作品 ( <span>赞: 1111, 排名: 1</span> ) </p>
-                    <button class="btn btn-primary" ><i></i>好作品,赞一个</button>
+                    <button class="btn btn-primary"><i></i>好作品,赞一个</button>
                 </div>
                 <div class="design">
-                    <ul class="design-list">
+                    <ul class="design-list hidden-xs">
                         <li class="design-item col-xs-12">
                             <img src="images/ds.png" alt="" width="100%" height="100%" class="img-responsive">
                         </li>
@@ -59,11 +60,31 @@
                             <img src="images/ds.png" alt="" width="100%" height="100%" class="img-responsive">
                         </li>
                     </ul>
+                    <div class="swiper-container visible-xs-block">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"> <img src="images/ds.png" alt="" width="100%" height="100%" class="img-responsive"></div>
+                            <div class="swiper-slide"> <img src="images/ds.png" alt="" width="100%" height="100%" class="img-responsive"></div>
+                            <div class="swiper-slide"> <img src="images/ds.png" alt="" width="100%" height="100%" class="img-responsive"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="footer" style="background: pink;height:300px;"></div>
 </body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        lazyLoading: true,
+        spaceBetween: 10,
+    })
+</script>
 
 </html>

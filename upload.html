@@ -2,139 +2,166 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <title>PC参赛者详情页</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <title>PC参赛者详情页</title>
 </head>
 
 <style>
-    .upload {
-        overflow: hidden;
-    }
-    #newsimg {
-        position: absolute;
-        clip: rect(0 0 0 0);
-    }
 
-    .imglabel {
-        display: block;
-        width: 220px;
-        line-height: 65px!important;
-        height: 65px;
-        font-size: 28px!important;
-        text-align: center;
-        border: 0;
-        border-radius: 4px;
-        -webkit-transition: border-color .1s, background-color .1s;
-        transition: border-color .1s, background-color .1s;
-        outline: 0 none;
-        cursor: pointer;
-        font-weight: 500;
-        border: 2px solid #333; 
-        float: left;
-    }
-
-    .imgbox {
-        width: 786px;
-        overflow: hidden;
-        float: right;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    .imgbox .item{
-        width:212px;
-        height: 139px;
-        float: left;
-        margin-bottom: 35px;
-        cursor: pointer;
-        position: relative;
-    }
-    .imgbox .item img {
-        width: 100%;
-        height: 100%;
-    }
-    .imgbox .item i{
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        display: block;
-        width: 20px;
-        height: 20px;
-        background: url(images/remove.png) center no-repeat;
-        background-size: 100%;
-    }
 </style>
 
 <body>
-    <div class="header"></div>
-    <div class="container">
-        <div class="Avata-upload">
-
-        </div>
-        <div class="upload main">
-            <div class="production-upload">
-                <label for="newsimg" class="imglabel">+上传图片</label>
-                <input type="file" name='' id="newsimg" accept="image/png, image/jpeg, image/gif, image/jpg" multiple="multiple">
-                <div class="imgbox">
-                    <div class="item"><img src="1.jpg"></div>
-                    <div class="item"><img src="1.jpg"></div>
-                    <div class="item"><img src="1.jpg"></div>
-                    <div class="item"><img src="1.jpg"></div>
-                </div>
-            </div>
-            
-        </div>
+  <div class="header"></div>
+  <div class="container">
+    <div class="nav">
+      <ol class="breadcrumb">
+        <li><a href="#">活动首页</a></li>
+        <li class="active">上传作品</li>
+      </ol>
     </div>
-    <div class="footer" style="background: pink;height:300px;"></div>
+    <div class="upload main">
+      <div class="avata-upload cf row">
+        <div class="label-box col-sm-3  col-xs-12">
+
+          <!--pc/phone-->
+          <label for="avata-ipt" class="imglabel hidden-xs">+上传头像</label>
+          <span class="hidden-xs">请上传自己的真是头像</span>
+          <input type="file" name='' id="avata-ipt" accept="image/png, image/jpeg, image/gif, image/jpg">
+        </div>
+        <div class="imgbox box1 col-sm-9  col-xs-12">
+
+          <!--pc/phone-->
+          <div class="item placeholder"></div>
+
+          <!--phone-->
+          <label for="avata-ipt" class="xs-ipt visible-xs-*"></label>
+          <span class="visible-xs-block">点击上传头像（请上传自己的真实照片）</span>
+        </div>
+      </div>
+      <div class="production-upload cf row">
+        <div class="label-box col-sm-3  col-xs-12">
+
+          <!--pc-->
+          <label for="production-ipt" class="imglabel hidden-xs">+上传图片</label>
+          <span class="hidden-xs">参赛作品至少上传3张</span>
+
+          <!--phone-->
+          <div class="item placeholder hidden-xs"></div>
+          <label for="production-ipt" class="xs-ipt visible-xs-*"></label>
+          <span class="visible-xs-block">点击上传作品（至少3张，可批量上传）</span>
+          <input type="file" name='' id="production-ipt" accept="image/png, image/jpeg, image/gif, image/jpg" multiple="multiple">
+        </div>
+        <div class="imgbox box2 col-sm-9  col-xs-12">
+
+          <!--pc-->
+          <div class="item placeholder hidden-xs"></div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <textarea id="design-des" class="form-control" rows="3" placeholder="作品描述"></textarea>
+        <div class="upload-btn">确认上传</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer" style="background: pink;height:300px;"></div>
 </body>
 
 
 <script type="text/javascript">
-    $(function () {
-        Design.upload('#newsimg','.imgbox')
-    });
-    var Design = {
-        // inputID, 显示容器
-        upload: function (inputID,imgbox) {
-            var imgList = [];
-            $(inputID).change(function (event) {
-                // 根据这个 <input> 获取文件的 HTML5 js 对象
-                var files = event.target.files,
-                    file;
-                if (files && files.length > 0) {
-                    var str = '';
-                    for (var i = 0, len = files.length; i < len; i++) {
-                        file = files[i];
-                        // 文件大小校验的动作
-                        if (file.size > 1024 * 1024 * 2) {
-                            alert('图片大小不能超过 2MB!');
-                            return false;
-                        }
-                        var URL = window.URL || window.webkitURL;
-                        // 通过 file 生成目标 url
-                        var imgURL = URL.createObjectURL(file);
-                        // 用这个 URL 产生一个 <img> 将其显示出来
-                        $(imgbox).append($('<div class="item"><i></i><img src="'+imgURL+'"/></div>'));
-                        // 图片转base64
-                        var reader = new FileReader();
-                        reader.readAsDataURL(file)
-                        reader.onload = function () {
-                            imgList.push(this.result)
-                        }
-                    };
-                    // 上传列表 []
-                    console.log(imgList)
-                }
-            });
-        }
+  $(function () {
+    Design.upload('#avata-ipt', '.box1');
+    Design.upload('#production-ipt', '.box2', 'multiple');
+  });
+  // 图片上传
+  var Design = {
+    // inputID, 缩略图显示容器
+    upload: function (inputID, imgbox) {
+      // 储存参数对象
+      var _arguments = arguments;
+      $(inputID).change(function (event) {
+        // 根据这个 <input> 获取文件的 HTML5 js 对象
+        var files = event.target.files,
+          file;
+        if (files && files.length > 0) {
+          var str = '';
+          for (var i = 0, len = files.length; i < len; i++) {
+            file = files[i];
+            // 文件大小校验
+            if (file.size > 1024 * 1024 * 2) {
+              alert('图片大小不能超过 2MB!');
+              return false;
+            }
+            // var URL = window.URL || window.webkitURL;
+            // 通过 file 生成目标 url
+            // var imgURL = URL.createObjectURL(file);
+            // 用这个 URL 产生一个 <img> 将其显示出来
+            // $(imgbox).append($('<div class="item"><i></i><img src="' + imgURL + '"/></div>'));
 
+            // 图片转base64
+
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+              if (_arguments.length === 2) {
+                $(imgbox).find('.placeholder').html($(
+                  '<div class="item"><img src="' + this.result +
+                  '"/></div>'));
+              } else {
+                $(imgbox).append($('<div class="item"><i></i><img src="' + this.result +
+                  '"/></div>')).find('.placeholder').remove();
+
+                // 取消i%3的margin-right                                        
+                var imgLen = $('.production-upload img').length;
+                for (var i = 1; i <= imgLen; i++) {
+                  if (i % 3 == 0) {
+                    $('.production-upload .imgbox .item:eq(' + (i - 1) + ')').css(
+                      'margin-right', '0')
+                  }
+                }
+              }
+            }
+          };
+        }
+      });
     }
+  }
+
+  //确认上传 输入检测  avata  designList = []
+  $('.upload-btn').on('click', function () {
+    // 头像文件
+    var avata = $('.avata-upload img').attr('src');
+
+    // 作品列表文件
+    var designList = [];
+    var porLen = $('.production-upload img').length;
+    for (var i = 0; i < porLen; i++) {
+      var src = $('.production-upload img')[i].attributes.src;
+      designList.push(src);
+    }
+
+    // 判断作品描述
+    var desText = $('#design-des').val();
+
+    if (avata && porLen >= 3 && desText) {
+      // ajax 上传
+      console.log('上传成功')
+    } else {
+      if (!avata) {
+        alert('请上传头像')
+      } else if (porLen < 3) {
+        alert('至少上传3张作品');
+      } else if (!desText) {
+        alert('填写作品描述');
+      }
+    }
+
+  })
 </script>
 
 </html>
