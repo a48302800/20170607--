@@ -5,14 +5,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/zooming.min.js"></script>
+  <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.5.0/css/amazeui.min.css" />
   <title>作品列表</title>
 </head>
+<style>
+	.middle-img {
+		position: absolute;
+		left: 259px;
+		top: 0px;
+		width: 40px;
+	}
 
+	.up-img {
+		position: absolute;
+		top: -35px;
+		left: 261px;
+		width: 40px;
+	}
+
+	.down-img {
+		position: absolute;
+		top: 49px;
+		left: 257px;
+		width: 40px;
+	}
+
+	.left-img {
+		position: absolute;
+		left: 226px;
+		height: 40px;
+	}
+
+	.right-img {
+		position: absolute;
+		left: 310px;
+		height: 40px;
+	}
+	@media screen and (max-width:450px) {
+		.middle-img {
+			position: absolute;
+			left: 259px;
+			top: 0px;
+			width: 40px;
+			display: none;
+		}
+
+		.up-img {
+			position: absolute;
+			top: -40px;
+			left: 261px;
+			width: 40px;
+			display: none;
+		}
+
+		.down-img {
+			position: absolute;
+			top: 40px;
+			left: 257px;
+			width: 40px;
+			display: none;
+		}
+
+		.left-img {
+			position: absolute;
+			left: 218px;
+			width: 40px;
+			display: none;
+		}
+
+		.right-img {
+			position: absolute;
+			left: 300px;
+			width: 40px;
+			display: none;
+		}
+
+		.rotate_jia{
+			display: none;
+		}.rotate_div{
+			display: none;
+		}.rotate_jian{
+			display: none;
+		}
+	}
+</style>
 <body>
   <div class="header"></div>
   <div class="container">
@@ -23,10 +101,10 @@
       </ol>
     </div>
     <div class="production-wrap">
-      <ul>
+      <ul  data-am-widget="gallery" class="" data-am-gallery="{ pureview: true }" >
         <li>
-          <div class="item-img">
-            <img src="images/ds.png" alt="" width="100%" height="100%" class="img-zoomable">
+          <div class="item-img am-gallery-item">
+            <img src="images/ds.png" alt="" width="100%" height="100%">
           </div>
           <div class="text-box">
             <p><span>设计师</span><span><i class="username"></i>张三</span><span><i class="address"></i>佛山</span></p>
@@ -34,14 +112,36 @@
           </div>
         </li>
       </ul>
-      <div class="loadmore">加载更多</div>
+      <nav aria-label="Page navigation" class="cf hidden-xs">
+        <ul class="pagination">
+          <li>
+            <a href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li>
+            <a href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="loadmore visible-xs-block">加载更多</div>
     </div>
   </div>
   <div class="footer" style="background: pink;height:300px;"></div>
 </body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/amazeui.js"></script>
 <script>
   $(function () {
-  
+
     var _li =
       `<li>
             <div class="item-img">
@@ -53,23 +153,29 @@
             </div>
         </li>`;
     $('.production').empty();
-    for (var i = 0; i < 9; i++) {
-      $('.production-wrap ul').append(_li);
+    for (var i = 0; i < 10; i++) {
+      $('.production-wrap>ul').append(_li);
     }
-    // var len = $('.production-wrap li').length;
-    // for(var i = 0;i<len;i++){
-    //     if(i%3==0){
-    //         $('.production-wrap li:nth-child('+i+')').css('margin','0 0 15px 0')
-    //     }
-    // }
+    // 取消列表margin-right
+        // 判断是否移动设备
+    var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito",
+      "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
+    var browser = navigator.userAgent.toLowerCase();
+    var isMobile = false;
+    for (var i = 0; i < mobileAgent.length; i++) {
+      if (browser.indexOf(mobileAgent[i]) != -1) {
+        isMobile = true;
+        break;
+      }
+    }
+    if (isMobile == true) return;
 
-
-
-    var zooming = new Zooming({
-      'bgColor':'rgba(0,0,0,.9)',
-      'enableGrab':'false'
-    });
-    zooming.listen('.img-zoomable');
+    var len = $('.production-wrap li').length;
+    for (var i = 0; i < len; i++) {
+      if (i % 3 == 0) {
+        $('.production-wrap li:nth-child(' + i + ')').css('margin-right', '0')
+      }
+    }
   })
 </script>
 

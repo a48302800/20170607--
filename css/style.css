@@ -308,14 +308,20 @@ li {
 
 
 /*上传页面*/
-
+.modal{
+    padding: 20px;
+}
+.moda .btn-primary{
+    float: left;
+}
+.moda .btn-danger{
+    float: right;
+}
 .container form {
     width: 890px;
     margin: 0 auto;
     padding: 50px;
-    border: 1px solid #004894;
     border-radius: 15px;
-    margin-top: 34px;
 }
 
 .container input {
@@ -364,6 +370,7 @@ li {
     cursor: pointer;
     display: table-cell;
     vertical-align: middle;
+    box-sizing: content-box;
 }
 
 .signed-box .avata img {
@@ -377,7 +384,8 @@ li {
     display: table-cell;
     vertical-align: middle;
 }
-.signed-box .btn-box a{
+
+.signed-box .btn-box a {
     margin: 10px 0;
 }
 
@@ -417,6 +425,12 @@ li {
         font-size: 14px;
         padding: 6px 12px;
     }
+    .signed-box .avata {
+        width: 120px;
+        height: 120px;
+        margin-right: 15px;
+        margin-top: 10px;
+    }
 }
 
 
@@ -427,15 +441,14 @@ li {
 }
 
 .production-wrap ul {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    padding-left: 0;
 }
 
-.production-wrap li {
+.production-wrap>ul li {
     width: 380px;
     float: left;
     margin-bottom: 15px;
+    margin-right: 15px;
 }
 
 .text-box {
@@ -448,11 +461,12 @@ li {
     margin: 0;
     font-size: 18px;
     line-height: 1.8;
-}
-
-.text-box p {
     display: flex;
     justify-content: space-between;
+}
+
+.text-box p:nth-child(2) {
+    cursor: pointer;
 }
 
 .text-box p:nth-child(2) span:nth-child(2) {
@@ -490,10 +504,15 @@ li {
     padding: 10px 0;
     color: #fff;
     background: #004894;
+    clear: both;
 }
 
 .loadmore:active {
     background: #003f81;
+}
+
+.production-wrap nav {
+    text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -507,24 +526,34 @@ li {
     .breadcrumb .active span {
         font-size: 10px;
     }
-    .production-wrap li {
+    .production-wrap>ul {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .production-wrap > ul li {
         width: 48%;
         margin-bottom: 12px;
+        margin-right: 0;
+    }
+    .text-box {
+        padding: 10px;
     }
     .text-box p {
-        font-size: 10px;
+        font-size: 12px;
         line-height: 1.8;
     }
     .text-box .username,
     .text-box .address {
-        width: 8px;
-        height: 8px;
+        width: 12px;
+        height: 14px;
         margin-right: 3px;
-        background: url(../images/icon-list.png) 0 -40px no-repeat;
-        background-size: 18px auto;
+        background: url(../images/icon-list.png) 0 -26px no-repeat;
+        background-size: 12px auto;
+        vertical-align: text-top;
     }
     .text-box .address {
-        background-position: 0 -20px;
+        background-position: 0 -13px;
         ;
     }
     .text-box p:nth-child(2) span:nth-child(2) i {

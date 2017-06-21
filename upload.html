@@ -7,14 +7,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/amazeui.min.css" />
+  <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/amazeui.min.js"></script>
+  <script src="js/iscroll-zoom.min.js"></script> 
+  <script src="js/hammer.min.js"></script> 
+  <script src="js/photoClip.min.js"></script>
   <title>PC参赛者详情页</title>
 </head>
 
-<style>
-
-</style>
 
 <body>
   <div class="header"></div>
@@ -44,6 +46,99 @@
           <span class="visible-xs-block">点击上传头像（请上传自己的真实照片）</span>
         </div>
       </div>
+
+
+
+		<div class="am-popup" id="my-popup">
+			<div class="am-popup-inner">
+				<div class="am-popup-hd">
+					<h4 class="am-popup-title">裁剪图片</h4>
+					<span data-am-modal-close class="am-close">&times;</span>
+				</div>
+				<div class="am-popup-bd">
+					<!-- 裁剪显示区 -->
+					<div class="am-margin-bottom-sm" id="clip"></div>
+
+					<button type="button" class="am-btn am-btn-primary" id="clipBtn">
+						裁剪
+					</button>
+
+					<input class="am-hide" type="file" id="file">
+				</div>
+			</div>
+		</div>
+		<div>
+			<img class="am-img-circle am-img-thumbnail" src="images/ds.png" id="img-view" />
+			<br>
+			<button type="button" class="am-btn am-btn-primary" id="toggle-file">上传头像</button>
+		</div>
+
+		<script>
+			$(function() {
+				var $clip = $("#clip");
+				var $file = $("#file");
+				var $imgView = $("#img-view");
+				var $popup = $("#my-popup");
+				$("#toggle-file").click(function() {
+					$file.trigger("click");
+					$popup.modal({
+						closeViaDimmer: false
+					});
+				});
+
+				$clip.photoClip({
+					width: 250,
+					height: 250,
+					fileMinSize: 20,
+					file: $file,
+					ok: "#clipBtn",
+					loadStart: function() {
+						console.log("照片读取中");
+					},
+					loadProgress: function(progress) {
+						console.log(progress);
+					},
+					loadError: function() {
+						console.log("图片加载失败");
+					},
+					loadComplete: function() {
+						console.log("照片读取完成");
+					},
+					imgSizeMin: function(kbs) {
+						console.log(kbs, "上传图片过小");
+					},
+					clipFinish: function(dataURL) {
+						document.getElementById("img-view").src = dataURL;
+						$popup.modal("close");
+					}
+				});
+			})
+		</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div class="production-upload cf row">
         <div class="label-box col-sm-3  col-xs-12">
 
@@ -69,12 +164,44 @@
       </div>
     </div>
   </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">确定删除?</h4>
+        </div>
+        <div class="modal-body">
+          点击 "+" 继续上传图片
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-danger" id="deleteImg">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="footer" style="background: pink;height:300px;"></div>
 </body>
 
 
 <script type="text/javascript">
   $(function () {
+
+    // 点击图片弹出删除框
+    $('.box2').on('click', '.item', function () {
+      $('#myModal').modal('show');
+      var _img = $(this)
+      $('#deleteImg').click(function () {
+        $('#myModal').modal('hide');
+        _img.remove();
+      })
+    })
+
+
     Design.upload('#avata-ipt', '.box1');
     Design.upload('#production-ipt', '.box2', 'multiple');
   });
@@ -113,7 +240,9 @@
                   '<div class="item"><img src="' + this.result +
                   '"/></div>'));
               } else {
-                $(imgbox).append($('<div class="item"><i></i><img src="' + this.result +
+                $(imgbox).append($(
+                  '<div class="item"  class="btn btn-primary btn-lg" data-toggle="modal" ><img src="' +
+                  this.result +
                   '"/></div>')).find('.placeholder').remove();
 
                 // 取消i%3的margin-right                                        
@@ -143,6 +272,7 @@
     for (var i = 0; i < porLen; i++) {
       var src = $('.production-upload img')[i].attributes.src;
       designList.push(src);
+      console.log(designList);
     }
 
     // 判断作品描述
@@ -160,7 +290,6 @@
         alert('填写作品描述');
       }
     }
-
   })
 </script>
 
